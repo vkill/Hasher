@@ -60,6 +60,8 @@ var hasher = (function(window){
 
     function _trimHash(hash){
         if (!hash) return '';
+        var regexpStartWith = new RegExp('^' + _escapeRegExp(hasher.prependHash));
+        if (!regexpStartWith.exec(hash)) return '';
         var regexp = new RegExp('^' + _escapeRegExp(hasher.prependHash) + '|' + _escapeRegExp(hasher.appendHash) + '$', 'g');
         return hash.replace(regexp, '');
     }
